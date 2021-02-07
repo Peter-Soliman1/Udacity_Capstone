@@ -1,5 +1,5 @@
 eksctl create cluster \
---name dfreecapstonecluster \
+--name udacitycluster \
 --version 1.18 \
 --nodegroup-name standard-workers \
 --node-type t2.small \
