@@ -1,13 +1,14 @@
 pipeline{
 	agent any
 
-	stages{
-		stage("build"){
-			steps{
-				echo 'Building the application ...'
+	stage('Create kubernetes cluster') {
+			steps {
+				withAWS(region:'us-west-2', credentials:'aws_credentials') {
+					sh '''
+						./create_EKS.sh
+					'''
+				}
 			}
 		}
-
-	}
 
 }
