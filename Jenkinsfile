@@ -7,6 +7,11 @@ pipeline{
 
 	agent any
 	stages{
+		stage('Cloning Git') {
+            steps {
+                git 'https://github.com/ASa3ed/Udacity_Capstone.git'
+            }
+        }
 		stage('Lint HTML') {
 			steps {
 				sh 'tidy -q -e *.html'
