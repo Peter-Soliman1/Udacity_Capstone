@@ -13,11 +13,9 @@ pipeline{
 			// 	docker {image 'ubuntu'}
 			// }
 			steps{
-				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS']]){
+				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
-						docker login -u $USERNAME -p $USERPASS
 						docker build -t asghostknight/capstone .
-						docker push asghostknight/capstone
 					'''
 				}
 			}
