@@ -17,7 +17,7 @@ pipeline{
 					sh '''
 						docker build -t asghostknight/capstone .
 						// docker login -u $USERNAME -p $USERPASS
-						docker push asghostknight/capstone
+						// docker push asghostknight/capstone
 					'''
 				}
 			}
