@@ -9,9 +9,9 @@ pipeline{
 		// }
 
 		stage("Build & Push Docker Image to DockerHub"){
-			// agent {
-			// 	docker {image 'maven:3-alpine'}
-			// }
+			agent {
+				docker {image 'ubuntu'}
+			}
 			steps{
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS']]){
 					sh '''
