@@ -16,9 +16,9 @@ pipeline{
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
 						whoami
-						sudo groupadd docker
-						sudo usermod -aG docker jenkins
-						su -s jenkins
+						// sudo groupadd docker
+						// sudo usermod -aG docker jenkins
+						// su -s jenkins
 						docker build -t asghostknight/capstone .
 					'''
 				}
