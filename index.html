@@ -4,6 +4,13 @@
 		<title>Capstone Project</title>
 	</head>
 	<body>
-		<h2> Hello It Works ^_^ </h2>	
+		<h2> Hello It Works ^_^ </h2>
+		<script type="application/javascript">
+		  function getIP(json) {
+		    document.write("IP address: ", json.ip);
+			}
+		</script>
+		<script type="application/javascript" src="http://ipinfo.io/?format=jsonp&callback=getIP"></script>
+	
 	</body>
 </html>
