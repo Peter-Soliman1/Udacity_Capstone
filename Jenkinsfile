@@ -16,7 +16,7 @@ pipeline{
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
 						which docker
-						docker build -t asghostknight/capstone .
+						/usr/bin/docker build -t asghostknight/capstone .
 					'''
 				}
 			}
