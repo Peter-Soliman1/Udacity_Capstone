@@ -4,7 +4,6 @@ pipeline{
 		stage('Lint HTML') {
 			// agent { docker { image 'python:3.5.1' } }
 			steps {
-				sh 'sudo apt-get install tidy'
 				sh 'tidy -q -e *.html'
 			}
 		}
