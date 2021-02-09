@@ -23,8 +23,8 @@ jobs:
       - run:
           name: Hadolint Dockerfile
           command: |
-            hadolint -v
-            hadolint --ignore DL3006 Dockerfile
+            sudo hadolint -v
+            sudo hadolint --ignore DL3006 Dockerfile
       - run:
           name: Build and Push Docker Image 
           command: |
