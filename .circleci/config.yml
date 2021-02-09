@@ -65,6 +65,26 @@ jobs:
           name: Start Green Service 
           command: |       
             kubectl apply -f ./Green.json
+      - run:
+          name: Redirect to Blue 
+          command: |       
+            kubectl apply -f ./Blue-Service.json
+
+  Apply-Green:
+    docker:
+    - image: amazon/aws-cli
+    steps:
+      - checkout
+      - kubernetes/install-kubectl
+      - run:
+          name: Update Kubeconfig
+          command: |
+            ./update_kubeconfig.sh
+      - run:
+          name: Redirect to Green
+          command: |
+            kubectl apply -f ./Green-Service.json
+
 
 workflows:
   default:
@@ -74,3 +94,6 @@ workflows:
           requires: [Lint]
       - Kubectl_Apply:
           requires: [Dockerize]
+      - Apply-Green:
+          requires:
+            - hold
