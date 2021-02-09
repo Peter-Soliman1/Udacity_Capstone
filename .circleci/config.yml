@@ -31,12 +31,15 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: |
-         echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
-         docker run -d --name capstone asghostknight/capstone
-      - run: docker build -t asghostknight/capstone .
-      - run: docker push asghostknight/capstone   
-
+      - run: 
+        name: Build Image 
+        command: |
+          docker build -t asghostknight/capstone .
+      - run: 
+        name: Push Image to DockerHub 
+        command: |
+          docker push asghostknight/capstone
+      
 
 workflows:
   default:
