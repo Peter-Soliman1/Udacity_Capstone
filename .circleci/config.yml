@@ -11,7 +11,7 @@ jobs:
           name: Linting HTML and Dockerfile
           command: |
             echo "Hello"
-            apt-get install tidy
+            sudo apt-get install tidy
             tidy -q -e *.html
             hadolint --ignore DL3006 Dockerfile
 
