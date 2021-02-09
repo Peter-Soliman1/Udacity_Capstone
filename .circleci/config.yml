@@ -2,7 +2,7 @@ version: 2.1
      
 
 jobs:
-  Dockerizing:
+  Lint:
     docker:
       - image: ubuntu
     steps:
@@ -26,12 +26,16 @@ jobs:
           command: |
             hadolint -v
             hadolint --ignore DL3006 Dockerfile
-      - run:
-          name: Build and Push Docker Image 
-          command: |
-            docker build -t asghostknight/capstone .\
-            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-            docker push asghostknight/capstone
+
+  Dockerize:
+    machine: true
+    steps:
+      - checkout
+      - run: |
+         echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+         docker run -d --name capstone asghostknight/capstone
+      - run: docker build -t asghostknight/capstone .
+      - run: docker push asghostknight/capstone   
 
 
 workflows:
