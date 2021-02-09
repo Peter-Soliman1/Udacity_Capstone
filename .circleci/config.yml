@@ -31,6 +31,10 @@ jobs:
     machine: true
     steps:
       - checkout
+      - run:
+          name: Docker Login
+          command: |
+            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
       - run: 
           name: Build Image 
           command: |
