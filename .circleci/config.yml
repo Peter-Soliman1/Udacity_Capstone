@@ -47,24 +47,16 @@ jobs:
           command: |
             docker push asghostknight/capstone
     
-  Update_kubeconfig:
-    docker:
-    - image: amazon/aws-cli
-    steps:
-      - checkout
-      - kubernetes/install-kubectl
-      - run:
-          name:
-          command: |
-            ./update_kubeconfig.sh
-            kubectl apply -f ./Blue.json
-  
   Kubectl_Apply:
     docker:
     - image: amazon/aws-cli
     steps:
       - checkout
       - kubernetes/install-kubectl
+      - run:
+          name: Update Kubeconfig
+          command: |
+            ./update_kubeconfig.sh
       - run:
           name: Start Blue Service 
           command: |
@@ -80,7 +72,5 @@ workflows:
       - Lint
       - Dockerize:
           requires: [Lint]
-      - Update_kubeconfig:
-          requires: [Dockerize]
       - Kubectl_Apply:
-          requires: [Update_kubeconfig]
+          requires: [Dockerize]
