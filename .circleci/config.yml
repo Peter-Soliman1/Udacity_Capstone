@@ -46,16 +46,16 @@ jobs:
           command: |
             docker push asghostknight/capstone
     
-    Update_kubeconfig:
-      docker:
-      - image: circleci/aws-eks@1.0.3
-      steps:
-        - checkout
-        - kubernetes/install-kubectl
-        - run:
-            name:
-            command: |
-              ./update_kubeconfig.sh
+  Update_kubeconfig:
+    docker:
+    - image: circleci/aws-eks@1.0.3
+    steps:
+      - checkout
+      - kubernetes/install-kubectl
+      - run:
+          name:
+          command: |
+            ./update_kubeconfig.sh
               
 
 
