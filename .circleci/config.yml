@@ -28,7 +28,8 @@ jobs:
             hadolint --ignore DL3006 Dockerfile
 
   Dockerize:
-    machine: true
+    docker:
+      - image: alpine
     steps:
       - checkout
       - run: |
