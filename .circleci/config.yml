@@ -75,10 +75,10 @@ jobs:
 workflows:
   default:
     jobs:
-      # - Lint
-      # - Dockerize:
-      #     requires: [Lint]
-      # - Update_kubeconfig:
-      #     requires: [Dockerize]
-      - Kubectl_Apply
-          # requires: [Update_kubeconfig]
+      - Lint
+      - Dockerize:
+          requires: [Lint]
+      - Update_kubeconfig:
+          requires: [Dockerize]
+      - Kubectl_Apply:
+          requires: [Update_kubeconfig]
