@@ -4,14 +4,15 @@ version: 2.1
 jobs:
   Dockerizing:
     docker:
-      - image: nginx
+      - image: ubuntu
     steps:
       - checkout
       - run:
           name: Linting HTML and Dockerfile
           command: |
+            apt-get update && apt-get upgrade
             apt search tidy
-            # apt install tidy
+            apt install tidy
             tidy -q -e *.html
             hadolint --ignore DL3006 Dockerfile
 
