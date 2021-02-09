@@ -8,14 +8,18 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Linting HTML and Dockerfile
+          name: Update & install Dependencies
           command: |
             apt-get update && apt-get upgrade -y
-            apt search tidy
-            apt install tidy
+            apt-get install tidy
+      - run:
+          name: Lint HTML
+          command: |
             tidy -q -e *.html
+      - run:
+          name: Hadolint Dockerfile
+          command: |
             hadolint --ignore DL3006 Dockerfile
-
       - run:
           name: Build and Push Docker Image 
           command: |
