@@ -22,7 +22,7 @@
           "containers": [
             {
               "name": "green",
-              "image": "asghostknight/capstone",
+              "image": "asghostknight/capstone:latest",
               "ports": [
                 {
                   "name": "server-green",
