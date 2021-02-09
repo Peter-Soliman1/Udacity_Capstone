@@ -2,6 +2,7 @@ version: 2.1
      
 orbs:
   kubernetes: circleci/kubernetes@0.11.2
+  aws-eks: circleci/aws-eks@1.0.3
 
 jobs:
   Lint:
@@ -48,10 +49,10 @@ jobs:
     
   Update_kubeconfig:
     docker:
-    - image: circleci/aws-eks
+    - image: amazon/aws-cli
     steps:
       - checkout
-      - kubernetes/install-kubectl
+      # - kubernetes/install-kubectl
       - run:
           name:
           command: |
