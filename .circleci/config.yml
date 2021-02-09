@@ -52,13 +52,25 @@ jobs:
     - image: amazon/aws-cli
     steps:
       - checkout
-      # - kubernetes/install-kubectl
       - run:
           name:
           command: |
             ./update_kubeconfig.sh
-              
-
+  
+  Kubectl_Apply:
+    docker:
+    - image: amazon/aws-cli
+    steps:
+      - checkout
+      - kubernetes/install-kubectl
+      - run:
+          name: Start Blue Service 
+          command: |
+            kubectl apply -f ./Blue.json        
+      - run:
+          name: Start Green Service 
+          command: |       
+            kubectl apply -f ./Green.json
 
 workflows:
   default:
@@ -66,5 +78,7 @@ workflows:
       # - Lint
       # - Dockerize:
       #     requires: [Lint]
-      - Update_kubeconfig
-          # requires: [Dockerize]
+      # - Update_kubeconfig:
+      #     requires: [Dockerize]
+      - Kubectl_Apply
+          # requires: [Update_kubeconfig]
