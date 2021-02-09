@@ -48,7 +48,7 @@ jobs:
     
   Update_kubeconfig:
     docker:
-    - image: circleci/aws-eks@1.0.3
+    - image: circleci/aws-eks
     steps:
       - checkout
       - kubernetes/install-kubectl
@@ -62,8 +62,8 @@ jobs:
 workflows:
   default:
     jobs:
-      - Lint
-      - Dockerize:
-          requires: [Lint]
-      - Update_kubeconfig:
-          requires: [Dockerize]
+      # - Lint
+      # - Dockerize:
+      #     requires: [Lint]
+      - Update_kubeconfig
+          # requires: [Dockerize]
