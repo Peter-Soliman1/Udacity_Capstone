@@ -1,13 +1,13 @@
 eksctl create cluster \
 --name udacitycluster \
 --version 1.18 \
---nodegroup-name standard-workers \
---node-type t2.small \
+--region us-west-2 \
+--nodegroup-name udacity-workers \
+--node-type t2.micro \
 --nodes 2 \
 --nodes-min 1 \
 --nodes-max 3 \
 --node-ami auto \
---region us-west-2 \
 --zones us-west-2a \
 --zones us-west-2b \
---zones us-west-2c \
+--zones us-west-2c 

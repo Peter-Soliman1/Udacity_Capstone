@@ -1,0 +1,31 @@
+version: 2.1
+     
+
+jobs:
+  Dockerizing:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - checkout
+      - run:
+          name: Linting HTML and Dockerfile
+          command: |
+            tidy -q -e *.html
+            hadolint --ignore DL3006 Dockerfile
+
+      - run:
+          name: Build and Push Docker Image 
+          command: |
+            docker build -t asghostknight/capstone .\
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+            docker push asghostknight/capstone
+
+
+workflows:
+  default:
+    jobs:
+      - Dockerizing:
+          filters:
+            branches:
+              only: [master]
+      
