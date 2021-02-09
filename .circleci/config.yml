@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Linting HTML and Dockerfile
           command: |
-            apt-get update && apt-get upgrade
+            apt-get update && apt-get upgrade -y
             apt search tidy
             apt install tidy
             tidy -q -e *.html
