@@ -28,8 +28,7 @@ jobs:
             hadolint --ignore DL3006 Dockerfile
 
   Dockerize:
-    docker:
-      - image: alpine
+    machine: true
     steps:
       - checkout
       - run: |
@@ -43,5 +42,6 @@ workflows:
   default:
     jobs:
       - Lint
-      - Dockerize
+      - Dockerize:
+          requires: [Lint]
       
