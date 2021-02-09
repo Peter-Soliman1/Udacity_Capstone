@@ -52,10 +52,12 @@ jobs:
     - image: amazon/aws-cli
     steps:
       - checkout
+      - kubernetes/install-kubectl
       - run:
           name:
           command: |
             ./update_kubeconfig.sh
+            kubectl apply -f ./Blue.json
   
   Kubectl_Apply:
     docker:
