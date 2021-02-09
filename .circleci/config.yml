@@ -97,3 +97,4 @@ workflows:
       - Apply_Green:
           requires:
             - hold
+            - Kubectl_Apply
