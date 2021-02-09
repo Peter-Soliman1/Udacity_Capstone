@@ -1,5 +1,5 @@
 eksctl create cluster \
---name udacitycluster \
+--name UdacityCluster \
 --version 1.18 \
 --region us-west-2 \
 --nodegroup-name udacity-workers \

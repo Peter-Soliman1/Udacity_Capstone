@@ -25,7 +25,7 @@
               "image": "asghostknight/capstone",
               "ports": [
                 {
-                  "name": "server_blue",
+                  "name": "server-blue",
                   "containerPort": 80
                 }
               ]
@@ -34,5 +34,4 @@
         }
       }
     }
-  }
-  
+}

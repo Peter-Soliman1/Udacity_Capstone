@@ -1,1 +1,1 @@
-aws eks --region us-west-2 update-kubeconfig --name udacitycluster
+aws eks --region us-west-2 update-kubeconfig --name UdacityCluster

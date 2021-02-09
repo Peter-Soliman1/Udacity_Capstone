@@ -1,1 +1,1 @@
-eksctl delete cluster --name udacitycluster
+eksctl delete cluster --name UdacityCluster
