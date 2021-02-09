@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Update & install Dependencies
           command: |
-            apt-get update 
+            apt-get update -y
             apt-get install tidy
       - run:
           name: Lint HTML
