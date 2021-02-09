@@ -43,5 +43,5 @@ workflows:
   default:
     jobs:
       - Lint
-      - Dockerizing
+      - Dockerize
       
