@@ -70,7 +70,7 @@ jobs:
           command: |       
             kubectl apply -f ./Blue-Service.json
 
-  Apply-Green:
+  Apply_Green:
     docker:
     - image: amazon/aws-cli
     steps:
@@ -94,6 +94,6 @@ workflows:
           requires: [Lint]
       - Kubectl_Apply:
           requires: [Dockerize]
-      - Apply-Green:
+      - Apply_Green:
           requires:
             - hold
