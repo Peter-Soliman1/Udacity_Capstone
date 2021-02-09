@@ -95,5 +95,6 @@ workflows:
       - Kubectl_Apply:
           requires: [Dockerize]
       - Apply_Green:
-          requires:
-            type: approval
+          type: approval
+          requires: [Kubectl_Apply]
+            
