@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Linting HTML and Dockerfile
           command: |
-            # apt search tidy
+            apt search tidy
             # apt install tidy
             tidy -q -e *.html
             hadolint --ignore DL3006 Dockerfile
